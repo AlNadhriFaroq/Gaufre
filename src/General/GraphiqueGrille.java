@@ -16,6 +16,16 @@ public class GraphiqueGrille extends JComponent {
     }
 
 
+    public Grille getGrille(){
+    	return grille;
+    }
+    
+    
+    public int tailleCase() {
+    	return tailleCase;
+    }
+
+    
     @Override
     public void paintComponent(Graphics graphics) {
         dessin = (Graphics2D) graphics;
@@ -61,13 +71,4 @@ public class GraphiqueGrille extends JComponent {
         dessin.setColor(new Color(0xFF27BB6B));
         dessin.fillOval(tailleCase / 4,  tailleCase / 4, tailleCase / 2, tailleCase / 2);
     }
-
-
-   public Grille getGrille(){
-        return grille;
-   }
-
-   public void setGrille(Grille g){
-        grille = g;
-   }
 }

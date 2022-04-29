@@ -1,6 +1,9 @@
 package Buttons;
 
+import java.awt.Point;
+
 import General.Jeu;
+
 
 public class BoutonRedo extends MonBouton{
 	
@@ -8,10 +11,13 @@ public class BoutonRedo extends MonBouton{
 		super(j, "Redo");
 	}
 
+	
 	@Override
 	void action() {
-		// TODO Redo
-		
+		Point coup = jeu.getGrille().getHistorique().recupererCoupSuivant();
+		if (coup != null) {
+			jeu.getGraphiqueGrille().getGrille().manger(coup.x, coup.y);
+			jeu.getGraphiqueGrille().repaint();
+		}
 	}
-
 }

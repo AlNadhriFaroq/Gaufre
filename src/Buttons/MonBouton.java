@@ -6,20 +6,17 @@ import javax.swing.*;
 
 
 public abstract class MonBouton extends JButton {
-	
-	Jeu j;
+	Jeu jeu;
 	
 	MonBouton(Jeu j, String texte){
-		
 		super(texte);
-		this.j = j;
+		this.jeu = j;
 		
 		this.addActionListener(ActionEvent -> {
 			action();
-			j.getGraphiqueGrille().repaint();
+			jeu.getGraphiqueGrille().repaint();
 		});
 	}
 	
 	abstract void action();
-
 }

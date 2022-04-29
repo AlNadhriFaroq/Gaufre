@@ -1,15 +1,19 @@
 package General;
 
+import java.awt.Point;
+import java.util.List;
 
 public class Grille {
     int lignes;
     int colonnes;
     boolean[][] grille;
     boolean joueur;
+    Historique histo;
 
 
     public Grille(int l, int c, boolean j) {
         initialiser(l, c, j);
+        histo = new Historique(j);
     }
     
     
@@ -36,9 +40,14 @@ public class Grille {
     }
     
     
+    public Historique getHistorique() {
+    	return histo;
+    }
+    
+    
     void redimensionner(int l, int c, boolean j){
         if(!grille[lignes - 1][colonnes - 1 ])
-            initialiser(l,c, j);
+            initialiser(l, c, j);
         else
             System.err.println("Redimensionnement impossible en cours de partie !");
     }
@@ -49,37 +58,48 @@ public class Grille {
         colonnes = c;
         joueur = p;
         grille = new boolean[l][c];
-        
+        initialiserFaux();
+    }
+    
+    
+    void initialiserFaux() {
         /* initialise toutes les cases a faux, non mangees */
         for(int i = 0; i < lignes; i++ )
             for(int j = 0; j < colonnes; j++ )
-                grille[i][j] = false;
+                grille[i][j] = false;    	
     }
 
     
     public void manger(int l , int c) {
         int i = l, j = c;
         
-        if (!estMangee(i, j)) {
-        	/* mange le rectangle inferieur */
-	        while(i < lignes  && !estMangee(i,j)){
+        /* mange le rectangle inferieur */
+	    while(i < lignes  && !estMangee(i,j)){
+	        grille[i][j] = true;
+	        j++;
+	        while (j < colonnes && !estMangee(i,j)){
 	            grille[i][j] = true;
 	            j++;
-	            while (j < colonnes && !estMangee(i,j)){
-	                grille[i][j] = true;
-	                j++;
-	            }
-	            j = c ;
-	            i++;
 	        }
-	        
-	        /* changement du joueur */
-	        joueur = !joueur;
-	        
-	        /* fin de partie */
-	        if (estTerminee())
-	        	System.out.println(joueurTxt() + " a gagné !");
-        }
+	        j = c ;
+	        i++;
+	    }
+	    
+	    /* changement du joueur */
+	    joueur = !joueur;
+	    
+	    /* fin de partie */
+	    if (estTerminee())
+	    	System.out.println(joueurTxt() + " a gagné !");
+    }
+    
+    
+    public void annulerManger(List<Point> coups) {
+    	initialiserFaux();
+    	joueur = histo.joueurInitial();
+    	for (Point coup : coups) {
+    		manger(coup.x, coup.y);
+    	}
     }
     
     

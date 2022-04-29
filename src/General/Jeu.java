@@ -1,24 +1,36 @@
 package General;
 
 
+import java.awt.BorderLayout;
+
 import javax.swing.*;
+
+import Buttons.*;
 
 
 public class Jeu  extends JFrame {
 	JFrame frame;
 	GraphiqueGrille gg;
-    Historique histo;
 	
 	
-	public Jeu(JFrame f, GraphiqueGrille g, Historique h) {
-		frame = f;
-		gg = g;
-        histo =h;
+	public Jeu() {
+    	frame = new JFrame();
+    	gg = new GraphiqueGrille(new Grille(10, 10, true));
+	}
+	
+	
+	public Grille getGrille() {
+		return gg.getGrille();
 	}
 	
 	
 	public GraphiqueGrille getGraphiqueGrille() {
-		   return gg;
+		return gg;
+	}
+	
+	
+	public Historique getHistorique() {
+		return gg.getGrille().getHistorique();
 	}
 
 	
@@ -27,13 +39,17 @@ public class Jeu  extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setResizable(true);
+        
         gg.addMouseListener(new EcouteurSouris(gg));
         frame.add(gg);
         
+        Box boxBoutonsUndoRedo = Box.createVerticalBox();
+        JButton boutonUndo = new BoutonUndo(this);
+        JButton boutonRedo = new BoutonRedo(this);
+        boxBoutonsUndoRedo.add(boutonUndo);
+        boxBoutonsUndoRedo.add(boutonRedo);
+        frame.add(boxBoutonsUndoRedo, BorderLayout.EAST);
+        
         frame.setVisible(true);
     }
-    public Historique getHistorique(){
-        return histo ;
-    }
-
 }
