@@ -5,13 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class GraphiqueGrille extends JComponent {
+public class ComponentGrille extends JComponent {
     Graphics2D dessin;
     Grille grille;
     int tailleCase;
 
 
-    public GraphiqueGrille(Grille g) {
+    public ComponentGrille(Grille g) {
         grille = g;
     }
 

@@ -8,14 +8,14 @@ import javax.swing.*;
 import Buttons.*;
 
 
-public class Jeu  extends JFrame {
+public class InterfaceGraphique  extends JFrame {
 	JFrame frame;
-	GraphiqueGrille gg;
+	ComponentGrille gg;
 	
 	
-	public Jeu() {
+	public InterfaceGraphique() {
     	frame = new JFrame();
-    	gg = new GraphiqueGrille(new Grille(10, 10, true));
+    	gg = new ComponentGrille(new Grille(10, 10, true));
 	}
 	
 	
@@ -24,7 +24,7 @@ public class Jeu  extends JFrame {
 	}
 	
 	
-	public GraphiqueGrille getGraphiqueGrille() {
+	public ComponentGrille getGraphiqueGrille() {
 		return gg;
 	}
 	
@@ -44,14 +44,17 @@ public class Jeu  extends JFrame {
         frame.add(gg);
         
         Box boxBoutons = Box.createVerticalBox();
+        
         JButton boutonSauver =  new BoutonSauver(this);
-        JButton boutonCharger =  new BoutonCharger(this);
+        JButton boutonCharger = new BoutonCharger(this);
         JButton boutonAnnuler = new BoutonAnnuler(this);
         JButton boutonRefaire = new BoutonRefaire(this);
+        
         boxBoutons.add(boutonSauver);
         boxBoutons.add(boutonCharger);
         boxBoutons.add(boutonAnnuler);
         boxBoutons.add(boutonRefaire);
+        
         frame.add(boxBoutons, BorderLayout.EAST);
         
         frame.setVisible(true);

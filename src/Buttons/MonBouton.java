@@ -1,14 +1,14 @@
 package Buttons;
 
 
-import General.Jeu;
+import General.InterfaceGraphique;
 import javax.swing.*;
 
 
 public abstract class MonBouton extends JButton {
-	Jeu jeu;
+	InterfaceGraphique jeu;
 	
-	MonBouton(Jeu j, String texte){
+	MonBouton(InterfaceGraphique j, String texte){
 		super(texte);
 		this.jeu = j;
 		

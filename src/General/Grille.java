@@ -99,17 +99,17 @@ public class Grille {
     }
     
     
-    boolean estMangee(int l , int c){
+    public boolean estMangee(int l , int c){
         return grille[l][c];
     }
 
     
-    boolean estTerminee(){
+    public boolean estTerminee(){
         return grille[0][0];
     }
     
     
-    void afficher(){
+    public void afficher(){
         System.out.println("{ joueur : " + joueur);
         for(int i = 0; i < lignes; i++ ) {
             for (int j = 0; j < colonnes; j++)

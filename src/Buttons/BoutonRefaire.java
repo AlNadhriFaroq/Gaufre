@@ -2,12 +2,12 @@ package Buttons;
 
 import java.awt.Point;
 
-import General.Jeu;
+import General.InterfaceGraphique;
 
 
 public class BoutonRefaire extends MonBouton{
 	
-	public BoutonRefaire(Jeu j) {
+	public BoutonRefaire(InterfaceGraphique j) {
 		super(j, "Refaire");
 	}
 

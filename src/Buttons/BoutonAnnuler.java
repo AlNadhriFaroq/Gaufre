@@ -1,7 +1,7 @@
 package Buttons;
 
 
-import General.Jeu;
+import General.InterfaceGraphique;
 
 import java.awt.*;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BoutonAnnuler extends MonBouton {
 	
-	public BoutonAnnuler(Jeu j) {
+	public BoutonAnnuler(InterfaceGraphique j) {
 		super(j, "Annuler");
 	}
 

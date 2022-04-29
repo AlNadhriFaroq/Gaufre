@@ -6,12 +6,12 @@ import java.io.*;
 //import java.time.LocalDateTime;
 //import java.time.format.DateTimeFormatter;
 
-import General.Jeu;
+import General.InterfaceGraphique;
 
 
 public class BoutonSauver extends MonBouton{
 	
-	public BoutonSauver(Jeu j) {
+	public BoutonSauver(InterfaceGraphique j) {
 		super(j, "Sauver");
 	}
 

@@ -6,12 +6,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import General.Jeu;
+import General.InterfaceGraphique;
 
 
 public class BoutonCharger extends MonBouton{
 	
-	public BoutonCharger(Jeu j) {
+	public BoutonCharger(InterfaceGraphique j) {
 		super(j, "Charger");
 	}
 
