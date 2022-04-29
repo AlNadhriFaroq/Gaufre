@@ -45,15 +45,7 @@ public class Grille {
     }
     
     
-    void redimensionner(int l, int c, boolean j){
-        if(!grille[lignes - 1][colonnes - 1 ])
-            initialiser(l, c, j);
-        else
-            System.err.println("Redimensionnement impossible en cours de partie !");
-    }
-    
-    
-    void initialiser(int l, int c, boolean p){
+    public void initialiser(int l, int c, boolean p){
         lignes = l;
         colonnes = c;
         joueur = p;
@@ -97,9 +89,13 @@ public class Grille {
     public void annulerManger(List<Point> coups) {
     	initialiserFaux();
     	joueur = histo.joueurInitial();
-    	for (Point coup : coups) {
+    	iterManger(coups);
+    }
+    
+    
+    public void iterManger(List<Point> coups) {
+    	for (Point coup : coups)
     		manger(coup.x, coup.y);
-    	}
     }
     
     
@@ -116,9 +112,8 @@ public class Grille {
     void afficher(){
         System.out.println("{ joueur : " + joueur);
         for(int i = 0; i < lignes; i++ ) {
-            for (int j = 0; j < colonnes; j++) {
+            for (int j = 0; j < colonnes; j++)
                 System.out.print(grille[i][j] + " ");
-            }
             System.out.println();
         }
         System.out.println("}");

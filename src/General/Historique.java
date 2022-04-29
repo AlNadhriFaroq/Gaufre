@@ -2,8 +2,12 @@ package General;
 
 
 import java.awt.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Historique {
@@ -55,5 +59,56 @@ public class Historique {
         if (!avant.isEmpty())
             apres.add(avant.remove(avant.size()-1));
         return avant;
+    }
+    
+    
+    public Point lire(InputStream in) {
+    	Scanner s = new Scanner(in);
+    	
+    	Point dimGrille = new Point(s.nextInt(), s.nextInt());
+    	
+    	joueurInitial = s.nextBoolean();
+    	
+    	int avantSize = s.nextInt();
+    	int apresSize = s.nextInt();
+    	
+    	avant.clear();
+    	apres.clear();
+    	
+    	for (int i = 0; i < avantSize; i++)
+    		avant.add(new Point(s.nextInt(), s.nextInt()));
+    	
+    	for (int i = 0; i < apresSize; i++)
+    		apres.add(new Point(s.nextInt(), s.nextInt()));
+    	
+    	s.close();
+    	return dimGrille;
+    }
+    
+    
+    public void ecrire(OutputStream out, Point dimGrille) {
+    	PrintStream p = new PrintStream(out);
+
+		p.println(dimGrille.x + " " + dimGrille.y);
+    	
+    	p.println(joueurInitial);
+    	
+    	p.println(avant.size());
+    	p.println(apres.size());
+    	
+    	for (Point coup : avant)
+    		p.println(coup.x + " " + coup.y);
+    	
+    	for (Point coup : apres)
+    		p.println(coup.x + " " + coup.y);
+    }
+    
+    
+    public void afficher() {
+    	System.out.println(joueurInitial);
+    	for (Point coup : avant)
+    		System.out.println(coup.toString());
+    	for (Point coup : apres)
+    		System.out.println(coup.toString());
     }
 }

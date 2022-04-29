@@ -43,12 +43,16 @@ public class Jeu  extends JFrame {
         gg.addMouseListener(new EcouteurSouris(gg));
         frame.add(gg);
         
-        Box boxBoutonsUndoRedo = Box.createVerticalBox();
-        JButton boutonUndo = new BoutonAnnuler(this);
-        JButton boutonRedo = new BoutonRefaire(this);
-        boxBoutonsUndoRedo.add(boutonUndo);
-        boxBoutonsUndoRedo.add(boutonRedo);
-        frame.add(boxBoutonsUndoRedo, BorderLayout.EAST);
+        Box boxBoutons = Box.createVerticalBox();
+        JButton boutonSauver =  new BoutonSauver(this);
+        JButton boutonCharger =  new BoutonCharger(this);
+        JButton boutonAnnuler = new BoutonAnnuler(this);
+        JButton boutonRefaire = new BoutonRefaire(this);
+        boxBoutons.add(boutonSauver);
+        boxBoutons.add(boutonCharger);
+        boxBoutons.add(boutonAnnuler);
+        boxBoutons.add(boutonRefaire);
+        frame.add(boxBoutons, BorderLayout.EAST);
         
         frame.setVisible(true);
     }
