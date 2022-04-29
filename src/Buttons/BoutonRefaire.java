@@ -5,10 +5,10 @@ import java.awt.Point;
 import General.Jeu;
 
 
-public class BoutonRedo extends MonBouton{
+public class BoutonRefaire extends MonBouton{
 	
-	public BoutonRedo(Jeu j) {
-		super(j, "Redo");
+	public BoutonRefaire(Jeu j) {
+		super(j, "Refaire");
 	}
 
 	

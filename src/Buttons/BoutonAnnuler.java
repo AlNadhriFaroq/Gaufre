@@ -7,10 +7,10 @@ import java.awt.*;
 import java.util.List;
 
 
-public class BoutonUndo extends MonBouton {
+public class BoutonAnnuler extends MonBouton {
 	
-	public BoutonUndo(Jeu j) {
-		super(j, "Undo");
+	public BoutonAnnuler(Jeu j) {
+		super(j, "Annuler");
 	}
 
 	

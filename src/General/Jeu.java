@@ -44,8 +44,8 @@ public class Jeu  extends JFrame {
         frame.add(gg);
         
         Box boxBoutonsUndoRedo = Box.createVerticalBox();
-        JButton boutonUndo = new BoutonUndo(this);
-        JButton boutonRedo = new BoutonRedo(this);
+        JButton boutonUndo = new BoutonAnnuler(this);
+        JButton boutonRedo = new BoutonRefaire(this);
         boxBoutonsUndoRedo.add(boutonUndo);
         boxBoutonsUndoRedo.add(boutonRedo);
         frame.add(boxBoutonsUndoRedo, BorderLayout.EAST);
