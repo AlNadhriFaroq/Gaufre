@@ -2,18 +2,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class EcouteurSouris extends MouseAdapter {
-    GraphiqueGrid graphGrid;
+    GraphiqueGrille grapheGrille;
 
-    public EcouteurSouris(GraphiqueGrid gg) {
-        graphGrid = gg ;
+    public EcouteurSouris(GraphiqueGrille gg) {
+        grapheGrille = gg ;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        int x = e.getX()  /  graphGrid.largeurCase ;
-        int y = e.getY()  / graphGrid.hauteurCase;
-        graphGrid.grid.manger(y ,x );
-        graphGrid.repaint();
+        int x = e.getX() / grapheGrille.tailleCase;
+        int y = e.getY() / grapheGrille.tailleCase;
+        grapheGrille.grille.manger(y, x);
+        grapheGrille.repaint();
     }
 
 }

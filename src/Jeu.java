@@ -5,9 +5,11 @@ public class Jeu  extends JFrame {
         JFrame frame = new JFrame("Gaufre empoisonnée");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
-        GraphiqueGrid g = new GraphiqueGrid(new Grid(10,10));
+        
+        GraphiqueGrille g = new GraphiqueGrille(new Grille(11,10, true));
         g.addMouseListener(new EcouteurSouris(g));
         frame.add(g);
+        
         frame.setVisible(true);
     }
 }
