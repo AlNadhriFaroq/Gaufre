@@ -37,8 +37,7 @@ public class Historique {
         if (!avant.isEmpty()) {
             coup = avant.remove(avant.size() - 1);
             apres.add(coup);
-        } else
-            coup = null;
+        }
         return avant;
     }
 
