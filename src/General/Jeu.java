@@ -15,19 +15,20 @@ public class Jeu  extends JFrame {
 	}
 	
 	
+	public GraphiqueGrille getGraphiqueGrille() {
+		   return gg;
+	}
+
+	
     void demarrer(){
         frame.setTitle("Gaufre empoisonnée");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
+        frame.setResizable(true);
         
         gg.addMouseListener(new EcouteurSouris(gg));
         frame.add(gg);
         
         frame.setVisible(true);
     }
-   
-   public GraphiqueGrille getGG() {
-	   return this.gg;
-   }
-
 }
