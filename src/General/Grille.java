@@ -1,3 +1,6 @@
+package General;
+
+
 public class Grille {
     int lignes;
     int colonnes;
@@ -46,6 +49,8 @@ public class Grille {
         colonnes = c;
         joueur = p;
         grille = new boolean[l][c];
+        
+        /* initialise toutes les cases a faux, non mangees */
         for(int i = 0; i < lignes; i++ )
             for(int j = 0; j < colonnes; j++ )
                 grille[i][j] = false;
@@ -56,6 +61,7 @@ public class Grille {
         int i = l, j = c;
         
         if (!estMangee(i, j)) {
+        	/* mange le rectangle inferieur */
 	        while(i < lignes  && !estMangee(i,j)){
 	            grille[i][j] = true;
 	            j++;
@@ -66,7 +72,11 @@ public class Grille {
 	            j = c ;
 	            i++;
 	        }
+	        
+	        /* changement du joueur */
 	        joueur = !joueur;
+	        
+	        /* fin de partie */
 	        if (estTerminee())
 	        	System.out.println(joueurTxt() + " a gagné !");
         }

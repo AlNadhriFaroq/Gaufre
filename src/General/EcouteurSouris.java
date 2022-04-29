@@ -1,5 +1,8 @@
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+package General;
+
+
+import java.awt.event.*;
+
 
 public class EcouteurSouris extends MouseAdapter {
     GraphiqueGrille grapheGrille;
