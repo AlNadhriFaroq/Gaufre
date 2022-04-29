@@ -13,12 +13,12 @@ public class Grille {
     }
     
     
-    int lignes(){
+    public int lignes(){
         return lignes;
     }
     
     
-    int colonnes(){
+    public int colonnes(){
         return colonnes;
     }
     
@@ -57,7 +57,7 @@ public class Grille {
     }
 
     
-    void manger(int l , int c) {
+    public void manger(int l , int c) {
         int i = l, j = c;
         
         if (!estMangee(i, j)) {

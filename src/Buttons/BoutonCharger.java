@@ -1,4 +1,4 @@
-package buttons;
+package Buttons;
 
 import General.Jeu;
 

@@ -1,6 +1,12 @@
-package buttons;
+package Buttons;
 
+
+import General.GraphiqueGrille;
+import General.Grille;
 import General.Jeu;
+
+import java.awt.*;
+import java.util.List;
 
 public class BoutonUndo extends MonBouton {
 	
@@ -10,7 +16,15 @@ public class BoutonUndo extends MonBouton {
 
 	@Override
 	void action() {
-		// TODO Undo
+		List<Point> coups = j.getHistorique().revenirEnArriere();
+
+		j.getGraphiqueGrille().setGrille(new Grille(j.getGraphiqueGrille().getGrille().lignes(), j.getGraphiqueGrille().getGrille().colonnes(), j.getHistorique().joueurInitial()));
+		for (Point coup : coups) {
+			j.getGraphiqueGrille().getGrille().manger(coup.x, coup.y);
+		}
+		j.getGraphiqueGrille().repaint();
+
+
 		
 	}
 }
