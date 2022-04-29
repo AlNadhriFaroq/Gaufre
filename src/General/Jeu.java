@@ -25,4 +25,9 @@ public class Jeu  extends JFrame {
         
         frame.setVisible(true);
     }
+   
+   public GraphiqueGrille getGG() {
+	   return this.gg;
+   }
+
 }
