@@ -19,10 +19,9 @@ public class InterfaceGraphique  extends JFrame {
 	
 	public InterfaceGraphique() {
     	frame = new JFrame();
-    	gg = new ComponentGrille(new Grille(10, 10, true));
+    	gg = new ComponentGrille(new Grille(10, 10, true, this));
         p = this.createPanel();
 	}
-	
 	
 	public Grille getGrille() {
 		return gg.getGrille();
@@ -32,7 +31,8 @@ public class InterfaceGraphique  extends JFrame {
 	public ComponentGrille getGraphiqueGrille() {
 		return gg;
 	}
-	
+
+    public boolean JoueurCourant(){return this.getGrille().joueur();}
 	
 	public Historique getHistorique() {
 		return gg.getGrille().getHistorique();
@@ -72,7 +72,7 @@ public class InterfaceGraphique  extends JFrame {
         frame.setSize(500, 500);
         frame.setResizable(true);
         
-        gg.addMouseListener(new EcouteurSouris(gg));
+        gg.addMouseListener(new EcouteurSouris(gg, this));
         frame.add(gg);
         frame.add(p, BorderLayout.EAST);
 

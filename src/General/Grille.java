@@ -14,9 +14,11 @@ public class Grille {
     boolean[][] grille;
     boolean joueur;
     Historique histo;
+    InterfaceGraphique parentg;
 
 
-    public Grille(int l, int c, boolean j) {
+    public Grille(int l, int c, boolean j, InterfaceGraphique ifj) {
+        parentg = ifj;
         initialiser(l, c, j);
         histo = new Historique(j);
     }
@@ -84,7 +86,9 @@ public class Grille {
 	    
 	    /* changement du joueur */
 	    joueur = !joueur;
-	    
+        parentg.tour.refresh();
+        parentg.p.updateUI();
+
 	    /* fin de partie */
 	    if (estTerminee())
 	    	System.out.println(joueurTxt() + " a gagné !");
