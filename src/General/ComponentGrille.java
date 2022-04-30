@@ -1,18 +1,25 @@
 package General;
 
 
+import IA.IAAleatoire;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 
 public class ComponentGrille extends JComponent {
     Graphics2D dessin;
     Grille grille;
     int tailleCase;
+    IAAleatoire IA;
+    boolean IAturn;
 
 
     public ComponentGrille(Grille g) {
         grille = g;
+        IA = new IAAleatoire(grille);
+        IAturn = false ;
     }
 
 
@@ -25,6 +32,21 @@ public class ComponentGrille extends JComponent {
     	return tailleCase;
     }
 
+    public void jouer(int l, int c)  {
+        if (!grille.estMangee(l, c)) {
+            grille.manger(l, c);
+            grille.getHistorique().ajouterCoup(new Point(l, c));
+            IAturn = !IAturn;
+        }
+        repaint();
+    }
+
+    public void jouerAI(){
+        Point p = IA.joueIAAleatoire();
+        grille.manger(p.x, p.y);
+        grille.getHistorique().ajouterCoup(p);
+        repaint();
+    }
     
     @Override
     public void paintComponent(Graphics graphics) {
