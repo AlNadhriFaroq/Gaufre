@@ -20,7 +20,7 @@ public class EcouteurSouris extends MouseAdapter {
     public EcouteurSouris(ComponentGrille gg) {
         grapheGrille = gg ;
         IAturn = false;
-        timer = new Timer(1000, (e) -> {
+        timer = new Timer(2*1000, (e) -> {
                 grapheGrille.jouerAI();
                 timer.stop();
                 IAturn = !IAturn ;
@@ -33,11 +33,12 @@ public class EcouteurSouris extends MouseAdapter {
         if(!IAturn) {
             int x = e.getX() / grapheGrille.tailleCase();
             int y = e.getY() / grapheGrille.tailleCase();
-            grapheGrille.jouer(y, x);
-            timer.start();
-            IAturn = !IAturn ;
+            boolean joue = grapheGrille.jouer(y, x);
+            if (joue && !grapheGrille.getGrille().estTerminee()){
+                timer.start();
+                IAturn = !IAturn ;
+            }
+
         }
-
-
     }
 }
