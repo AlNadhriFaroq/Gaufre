@@ -11,9 +11,11 @@ import IA.IAAleatoire;
 
 public class EcouteurSouris extends MouseAdapter {
     ComponentGrille grapheGrille;
+	InterfaceGraphique jeu;
     
-    public EcouteurSouris(ComponentGrille gg) {
+    public EcouteurSouris(ComponentGrille gg, InterfaceGraphique j) {
         grapheGrille = gg ;
+		jeu = j;
     }
     
 
@@ -37,5 +39,7 @@ public class EcouteurSouris extends MouseAdapter {
     	} catch (Exception exc) {
     		System.err.println(exc);
     	}
+		this.jeu.tour.refresh();
+		this.jeu.p.updateUI();
     }
 }
