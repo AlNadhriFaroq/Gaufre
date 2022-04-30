@@ -8,9 +8,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.Serializable;
 
-
-public class Historique {
+public class Historique implements Serializable {
     List<Point> avant;
     List<Point> apres;
     boolean joueurInitial;

@@ -1,6 +1,11 @@
 package General;
 
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 public class Grille {
@@ -118,4 +123,55 @@ public class Grille {
         }
         System.out.println("}");
     }    
+    public void save( String fileName ){
+        try {
+            FileOutputStream fsave = new FileOutputStream(fileName);
+            ObjectOutputStream out =  new ObjectOutputStream(fsave);
+            int un =  0, deux = 0 ;
+            while(un < lignes) {
+                while (deux < colonnes ){
+                    out.writeBoolean(grille[un][deux]);
+                    deux ++ ;
+                }
+                deux = 0  ;
+                un++;
+            }
+            out.writeInt(lignes);
+            out.writeInt(colonnes);
+            out.writeBoolean(joueur);
+            out.writeObject(histo) ;
+            out.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void load (String fileName ) {
+        try{
+            FileInputStream fload = new FileInputStream(fileName);
+            ObjectInputStream in = new ObjectInputStream(fload);
+            int un =  0, deux = 0 ;
+            while(un < lignes) {
+                while (deux < colonnes ){
+                    this.grille[un][deux] = in.readBoolean();
+                    deux ++ ;
+                }
+                deux = 0 ;
+                un++;
+            }
+            
+            this.lignes = in.readInt();
+            this.colonnes =   in.readInt();
+            this.joueur =  in.readBoolean();
+            this.histo = (Historique) in.readObject();
+            in.close();
+        }catch (IOException| ClassCastException b ){
+            System.out.println("Error:");
+            b.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 }
