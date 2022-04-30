@@ -72,7 +72,7 @@ public class InterfaceGraphique  extends JFrame {
         frame.setSize(500, 500);
         frame.setResizable(true);
         
-        gg.addMouseListener(new EcouteurSouris(gg, this));
+        gg.addMouseListener(new EcouteurSouris(gg));
         frame.add(gg);
         frame.add(p, BorderLayout.EAST);
 
