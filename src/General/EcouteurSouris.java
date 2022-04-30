@@ -14,11 +14,13 @@ import javax.swing.*;
 
 public class EcouteurSouris extends MouseAdapter {
     ComponentGrille grapheGrille;
+    InterfaceGraphique jeu;
     Timer timer;
     boolean IAturn;
     
-    public EcouteurSouris(ComponentGrille gg) {
+    public EcouteurSouris(ComponentGrille gg, InterfaceGraphique j) {
         grapheGrille = gg ;
+        jeu = j;
         IAturn = false;
         timer = new Timer(2*1000, (e) -> {
                 grapheGrille.jouerAI();
