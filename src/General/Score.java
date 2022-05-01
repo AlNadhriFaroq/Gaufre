@@ -1,10 +1,10 @@
 package General;
-
-public class Score {
+import java.io.Serializable;
+public class Score implements Serializable{
     int ScoreA, ScoreB;
     InterfaceGraphique jeu;
 
-    public Score( InterfaceGraphique jeu){
+    public Score( InterfaceGraphique jeu) {
         ScoreA= 0;
         ScoreB = 0;
         this.jeu = jeu;
@@ -19,6 +19,10 @@ public class Score {
             }
         }
 
+    }
+    public void restart (){
+        this.ScoreA = 0 ;
+        this.ScoreB = 0;
     }
 
     public int getScoreA(){

@@ -36,7 +36,7 @@ public class InterfaceGraphique  extends JFrame {
 
     public boolean JoueurCourant(){return this.getGrille().joueur();}
 	
-	public Historique getHistorique() {
+        public Historique getHistorique() {
 		return gg.getGrille().getHistorique();
 	}
 
@@ -52,12 +52,13 @@ public class InterfaceGraphique  extends JFrame {
         JButton boutonCharger = new BoutonCharger(this);
         JButton boutonAnnuler = new BoutonAnnuler(this);
         JButton boutonRefaire = new BoutonRefaire(this);
+        JButton boutonNouvellePartie = new  BoutonNouvellePartie(this);
 
         boxBoutons.add(boutonSauver);
         boxBoutons.add(boutonCharger);
         boxBoutons.add(boutonAnnuler);
         boxBoutons.add(boutonRefaire);
-
+        boxBoutons.add(boutonNouvellePartie);
         MyPanel.add(boxBoutons, BorderLayout.EAST);
 
 
@@ -75,12 +76,9 @@ public class InterfaceGraphique  extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setResizable(true);
-        
         gg.addMouseListener(new EcouteurSouris(gg, this));
         frame.add(gg);
         frame.add(p, BorderLayout.EAST);
-
-        
         frame.setVisible(true);
     }
 }
