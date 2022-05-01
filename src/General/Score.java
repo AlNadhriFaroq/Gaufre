@@ -13,11 +13,19 @@ public class Score {
     public void ScoreMAJ(){
         if (this.jeu.getGrille().estTerminee()){
             if (this.jeu.getGrille().joueur()){ /* Prends en compte le fait que le joueur est changé avant l'appel à est terminée*/
-                this.ScoreB ++;
-            }else{
                 this.ScoreA ++;
+            }else{
+                this.ScoreB ++;
             }
         }
 
+    }
+
+    public int getScoreA(){
+        return this.ScoreA;
+    }
+
+    public int getScoreB(){
+        return this.ScoreB;
     }
 }

@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Buttons.*;
+import labels.LabelScore;
 import labels.LabelTour;
 
 
@@ -15,6 +16,7 @@ public class InterfaceGraphique  extends JFrame {
 	ComponentGrille gg;
     JPanel p;
     LabelTour tour;
+    LabelScore score;
 	
 	
 	public InterfaceGraphique() {
@@ -61,8 +63,10 @@ public class InterfaceGraphique  extends JFrame {
 
         /* Les Labels */
         tour = new LabelTour(this);
+        score = new LabelScore(this);
 
         MyPanel.add(tour);
+        MyPanel.add(score);
 
         return MyPanel;
     }

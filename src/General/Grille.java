@@ -15,12 +15,14 @@ public class Grille {
     boolean joueur;
     Historique histo;
     InterfaceGraphique parentg;
+    Score score;
 
 
     public Grille(int l, int c, boolean j, InterfaceGraphique ifj) {
         parentg = ifj;
         initialiser(l, c, j);
         histo = new Historique(j);
+        score = new Score(parentg);
     }
     
     
@@ -37,6 +39,8 @@ public class Grille {
     public boolean joueur() {
     	return joueur;
     }
+
+    public Score getScore(){return score;}
     
     
     public String joueurTxt() {
@@ -90,8 +94,11 @@ public class Grille {
         parentg.p.updateUI();
 
 	    /* fin de partie */
-	    if (estTerminee())
-	    	System.out.println(joueurTxt() + " a gagné !");
+	    if (estTerminee()) {
+            score.ScoreMAJ();
+            parentg.score.refresh();
+            System.out.println(joueurTxt() + " a gagné !");
+        }
     }
     
     
