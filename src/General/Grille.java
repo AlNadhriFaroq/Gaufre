@@ -29,8 +29,7 @@ public class Grille {
     public int lignes(){
         return lignes;
     }
-    
-    
+
     public int colonnes(){
         return colonnes;
     }
@@ -153,6 +152,8 @@ public class Grille {
             out.writeInt(colonnes);
             out.writeBoolean(joueur);
             out.writeObject(histo) ;
+            out.writeInt(score.ScoreA);
+            out.writeInt(score.ScoreB);
             out.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -176,6 +177,9 @@ public class Grille {
             this.colonnes =   in.readInt();
             this.joueur =  in.readBoolean();
             this.histo = (Historique) in.readObject();
+            this.score.ScoreA = in.readInt();
+            this.score.ScoreB = in.readInt();
+
             in.close();
         }catch (IOException| ClassCastException b ){
             System.out.println("Error:");
@@ -183,8 +187,11 @@ public class Grille {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        parentg.tour.refresh();
+        parentg.score.refresh();
+        parentg.p.updateUI();
     }
-    void nouvellepartie (){
+    public void nouvellepartie (){
         int m = 0 , n = 0 ;
         while(n < this.lignes){
             while (m < this.colonnes){

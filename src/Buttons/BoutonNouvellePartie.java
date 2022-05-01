@@ -12,7 +12,8 @@ public class BoutonNouvellePartie extends MonBouton {
 
 	@Override
 	void action() {
-		// TODO Replay
+		this.jeu.getGraphiqueGrille().getGrille().nouvellepartie();
+		repaint();
 	}
 
 }
