@@ -35,6 +35,7 @@ public class IAMoyenne {
         if(i == j){
             return grilleCarre(i, j);
         }
+        //rectangle
         else{
             //configuration gagnante, on gagne, on mange l un des bords
             if(g.estMangee(1, 1)){
@@ -45,13 +46,15 @@ public class IAMoyenne {
                     return new Point(0, i);
                 }
             }
+            //configuration pas forcement gagnante
             else{
                 Random r = new Random();
                 int l, c;
                 do {
                     l = r.nextInt(g.lignes());
                     c = r.nextInt(g.colonnes());
-                } while(g.estMangee(l, c) || (l != 0 && c != 0));
+                } while((g.estMangee(l, c) || (l == 0 && c == 0)) || estPerdant(l, c));
+                System.out.println("" + estPerdant(l, c));
                 return new Point(l, c);
             }
         }
@@ -90,7 +93,38 @@ public class IAMoyenne {
         }
     }
 
-    boolean estCarre(int i, int j){
+    boolean estPerdant(int l, int c) {
+        Grille tmp = g;
+
+        if(l == 1 && c == 1){
+            System.out.println("l == 1 && c == 1");
+            return true;
+        }
+
+        if(l == 0 || c == 0){
+            System.out.println("l == 0 || c == 0");
+            return true;
+        }
+
+        tmp.manger(l, c);
+        int i = 0, j = 0;
+        while (j < colonnes && !tmp.estMangee(0, j)) {
+            j++;
+        }
+        while (i < lignes && !tmp.estMangee(i, 0)) {
+            i++;
+        }
+        System.out.println("apres boucle");
+        if (i == j) {
+            System.out.println(" i et j valent pareil et 1 1 est mangee");
+            return true;
+        }
+
+        if (i == 0 || j == 0) {
+            System.out.println(" i et j valent 0");
+            return true;
+        }
+
         return false;
     }
 }
