@@ -2,6 +2,7 @@ package General;
 
 
 import IA.IAAleatoire;
+import IA.IAMoyenne;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,13 +13,13 @@ public class ComponentGrille extends JComponent {
     Graphics2D dessin;
     Grille grille;
     int tailleCase;
-    IAAleatoire IA;
+    IAMoyenne IA;
 
 
 
     public ComponentGrille(Grille g) {
         grille = g;
-        IA = new IAAleatoire(grille);
+        IA = new IAMoyenne(grille);
     }
 
 
@@ -33,6 +34,9 @@ public class ComponentGrille extends JComponent {
 
     public boolean jouer(int l, int c)  {
         boolean joue = false;
+        if(l > grille.lignes() - 1 || c > grille.colonnes() - 1){
+            return false;
+        }
         if (!grille.estMangee(l, c)) {
             grille.manger(l, c);
             grille.getHistorique().ajouterCoup(new Point(l, c));
@@ -43,7 +47,7 @@ public class ComponentGrille extends JComponent {
     }
 
     public void jouerAI(){
-        Point p = IA.joueIAAleatoire();
+        Point p = IA.joueIAMoyenne();
         grille.manger(p.x, p.y);
         grille.getHistorique().ajouterCoup(p);
         repaint();

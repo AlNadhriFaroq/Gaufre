@@ -22,13 +22,13 @@ public class EcouteurSouris extends MouseAdapter {
         grapheGrille = gg ;
         jeu = j;
         IAturn = false;
-        timer = new Timer(2*1000, (e) -> {
+        timer = new Timer(1000, (e) -> {
                 grapheGrille.jouerAI();
                 timer.stop();
                 IAturn = !IAturn ;
         });
     }
-    
+
 
     @Override
     public void mousePressed(MouseEvent e) {
