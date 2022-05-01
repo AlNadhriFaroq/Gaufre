@@ -21,7 +21,7 @@ public class InterfaceGraphique  extends JFrame {
 	
 	public InterfaceGraphique() {
     	frame = new JFrame();
-    	gg = new ComponentGrille(new Grille(9, 9, true, this));
+    	gg = new ComponentGrille(new Grille(5, 9, true, this));
         p = this.createPanel();
 	}
 	

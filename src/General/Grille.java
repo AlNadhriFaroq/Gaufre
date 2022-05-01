@@ -186,14 +186,13 @@ public class Grille {
     }
     void nouvellepartie (){
         int m = 0 , n = 0 ;
-
-        while(m < this.lignes ){
-            while (n<this.colonnes){
+        while(n < this.lignes){
+            while (m < this.colonnes){
                 grille[n][m]= false ;
-             n++;
+             m++;
             }
-            n=0;
-            m++ ;
+            m=0;
+            n++ ;
         }
     }
     

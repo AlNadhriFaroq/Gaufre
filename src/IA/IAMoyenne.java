@@ -22,7 +22,6 @@ public class IAMoyenne {
         colonnes = g.colonnes();
     }
 
-    
     public Point joueIAMoyenne(){
 
         int i = 0, j = 0;
@@ -52,7 +51,7 @@ public class IAMoyenne {
                 do {
                     l = r.nextInt(g.lignes());
                     c = r.nextInt(g.colonnes());
-                } while(g.estMangee(l, c));
+                } while(g.estMangee(l, c) || (l != 0 && c != 0));
                 return new Point(l, c);
             }
         }
@@ -89,5 +88,9 @@ public class IAMoyenne {
                 }
             }
         }
+    }
+
+    boolean estCarre(int i, int j){
+        return false;
     }
 }
