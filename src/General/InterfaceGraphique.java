@@ -1,12 +1,14 @@
 package General;
 
 
-import java.awt.BorderLayout;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Buttons.*;
+import Listes.SpinnerColonnes;
+import Listes.SpinnerLignes;
 import labels.LabelScore;
 import labels.LabelTour;
 
@@ -17,22 +19,30 @@ public class InterfaceGraphique  extends JFrame {
     JPanel p;
     LabelTour tour;
     LabelScore score;
-	
-	
-	public InterfaceGraphique() {
+    int Lignes =10;
+    int Colonnes = 10;
+
+    public InterfaceGraphique() {
     	frame = new JFrame();
-    	gg = new ComponentGrille(new Grille(10, 10, true, this));
+    	gg = new ComponentGrille(new Grille(Lignes, Colonnes, true, this));
         p = this.createPanel();
 	}
-	
-	public Grille getGrille() {
-		return gg.getGrille();
-	}
+	public int getLignes(){return Lignes;}
+    public void setLignes(int i){this.Lignes = i;}
+
+    public int getColonnes(){return Colonnes;}
+    public void setColonnes(int i){this.Colonnes = i;}
+	public Grille getGrille() {	return gg.getGrille();}
 	
 	
 	public ComponentGrille getGraphiqueGrille() {
 		return gg;
 	}
+    public void setGg(int l, int c){
+        System.out.println("On a l="+l+" et c="+ c);
+        gg.getGrille().initialiser(l, c, true);
+        gg.repaint();
+     }
 
     public boolean JoueurCourant(){return this.getGrille().joueur();}
 	
@@ -68,6 +78,28 @@ public class InterfaceGraphique  extends JFrame {
 
         MyPanel.add(tour);
         MyPanel.add(score);
+
+        /* Les Spinners */
+
+        SpinnerLignes spinnerL = new SpinnerLignes(this);
+        SpinnerColonnes spinnerC = new SpinnerColonnes(this);
+        spinnerL.setMaximumSize(spinnerL.getPreferredSize());
+        spinnerC.setMaximumSize(spinnerC.getPreferredSize());
+
+
+        JTextArea TexteCol = new JTextArea("REGLAGE DES COLONNES :");
+        TexteCol.setOpaque(false);
+        TexteCol.setMaximumSize(TexteCol.getPreferredSize());
+        TexteCol.setFont(new Font(Font.SERIF, Font.BOLD,  10));
+        JTextArea TexteCLig = new JTextArea("REGLAGE DES LIGNES :");
+        TexteCLig.setOpaque(false);
+        TexteCLig.setMaximumSize(TexteCLig.getPreferredSize());
+        TexteCLig.setFont(new Font(Font.SERIF, Font.BOLD,  10));
+
+        MyPanel.add(TexteCol);
+        MyPanel.add(spinnerC);
+        MyPanel.add(TexteCLig);
+        MyPanel.add(spinnerL);
 
         return MyPanel;
     }

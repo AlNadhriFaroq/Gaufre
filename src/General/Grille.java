@@ -29,8 +29,7 @@ public class Grille {
     public int lignes(){
         return lignes;
     }
-    
-    
+
     public int colonnes(){
         return colonnes;
     }
