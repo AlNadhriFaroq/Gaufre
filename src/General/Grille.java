@@ -98,7 +98,9 @@ public class Grille {
             score.ScoreMAJ();
             parentg.score.refresh();
             System.out.println(joueurTxt() + " a gagné !");
-        }
+            nouvellepartie();
+
+	    }
     }
     
     
@@ -170,7 +172,6 @@ public class Grille {
                 deux = 0 ;
                 un++;
             }
-            
             this.lignes = in.readInt();
             this.colonnes =   in.readInt();
             this.joueur =  in.readBoolean();
@@ -181,6 +182,18 @@ public class Grille {
             b.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+    void nouvellepartie (){
+        int m = 0 , n = 0 ;
+
+        while(m < this.lignes ){
+            while (n<this.colonnes){
+                grille[n][m]= false ;
+             n++;
+            }
+            n=0;
+            m++ ;
         }
     }
     
