@@ -61,6 +61,7 @@ public class IAMoyenne {
     }
 
     Point grilleCarre(int i, int j){
+        System.out.println("grille carree");
         //si la case 1,1 pas mangee, on sera dans une configuration gagnante si on la mange, donc on la mange
         if(!g.estMangee(1, 1)){
             return new Point(1, 1);

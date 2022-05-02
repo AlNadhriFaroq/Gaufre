@@ -106,9 +106,16 @@ public class Historique implements Serializable {
     
     public void afficher() {
     	System.out.println(joueurInitial);
+        System.out.println("pile des coups faits");
     	for (Point coup : avant)
     		System.out.println(coup.toString());
+        System.out.println("pile des coups annules");
     	for (Point coup : apres)
     		System.out.println(coup.toString());
+    }
+
+    public void reiniHisto(){
+        avant.clear();
+        apres.clear();
     }
 }

@@ -34,6 +34,11 @@ public class ComponentGrille extends JComponent {
 
     public boolean jouer(int l, int c)  {
         boolean joue = false;
+        //condition pour verifier si le coup est perdant, sinon laisse un coup dans la pile
+        if(l == 0 && c == 0){
+            grille.manger(0, 0);
+            return true;
+        }
         if(l > grille.lignes() - 1 || c > grille.colonnes() - 1){
             return false;
         }
@@ -50,6 +55,7 @@ public class ComponentGrille extends JComponent {
         Point p = IA.joueIAMoyenne();
         grille.manger(p.x, p.y);
         grille.getHistorique().ajouterCoup(p);
+        System.out.println("coup ajoute");
         repaint();
     }
     
