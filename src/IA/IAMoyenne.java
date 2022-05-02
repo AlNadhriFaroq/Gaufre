@@ -2,8 +2,6 @@ package IA;
 
 
 import General.Grille;
-import General.InterfaceGraphique;
-
 import java.awt.*;
 import java.util.Random;
 
