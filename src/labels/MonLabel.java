@@ -13,7 +13,6 @@ public abstract class MonLabel extends JLabel implements MetAJour {
 		this.j = j;
 		this.setAlignmentX(CENTER_ALIGNMENT);
 		this.setBorder(new EmptyBorder(10, 0, 10, 0));
-		
 		this.refresh();
 		
 	}

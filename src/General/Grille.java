@@ -202,6 +202,12 @@ public class Grille {
             n++ ;
         }
     }
+    public void restartg(){
+        score.restart();
+        parentg.tour.refresh();
+        parentg.score.refresh();
+        parentg.p.updateUI();
+    }
     
     
 }
