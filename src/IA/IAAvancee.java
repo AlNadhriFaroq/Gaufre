@@ -11,13 +11,15 @@ public class IAAvancee {
     Grille g;
     int lignes;
     int colonnes;
-    Hashtable<Point, Grille> coupsGagnants;
+    Hashtable<Grille, Point> configVus;
+
 
     public IAAvancee(Grille grille){
         g = grille;
         lignes = g.lignes();
         colonnes = g.colonnes();
-        coupsGagnants = new Hashtable<>();
+        configVus = new Hashtable<>();
+
     }
 
 
@@ -44,7 +46,7 @@ public class IAAvancee {
                 tmp.manger(p.x, p.y);
                 if(calculJoueurB(tmp)){
                     valeur = true;
-                    coupsGagnants.put(p, tmp);
+                    configVus.put(tmp, p);
                 }
             }
             return valeur;
