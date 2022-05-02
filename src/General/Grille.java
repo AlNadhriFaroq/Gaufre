@@ -192,7 +192,6 @@ public class Grille {
         parentg.p.updateUI();
     }
     public void nouvellepartie (){
-        histo.reiniHisto();
         int m = 0 , n = 0 ;
         while(n < this.lignes){
             while (m < this.colonnes){
@@ -203,4 +202,12 @@ public class Grille {
             n++ ;
         }
     }
+    public void restartg(){
+        score.restart();
+        parentg.tour.refresh();
+        parentg.score.refresh();
+        parentg.p.updateUI();
+    }
+    
+    
 }
