@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AdaptateurNouvellePartie implements ActionListener {
-    ControleurMediateur control;
+    final ControleurMediateur control;
 
     AdaptateurNouvellePartie(ControleurMediateur control) {
         this.control = control;

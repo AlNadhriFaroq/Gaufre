@@ -1,7 +1,5 @@
 package Modele;
 
-import Global.Configuration;
-
 public class Grille implements Cloneable {
     int lignes, colonnes;
     boolean[][] grille;

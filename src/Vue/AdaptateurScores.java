@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AdaptateurScores implements ActionListener {
-    ControleurMediateur control;
+    final ControleurMediateur control;
 
     AdaptateurScores(ControleurMediateur control) {
         this.control = control;

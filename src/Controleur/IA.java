@@ -19,13 +19,13 @@ abstract class IA {
         else
             nom = Configuration.instance().lire("Joueur2IADifficulte");
         switch (nom) {
-            case "facile":
+            case "0":
                 instance = new IAFacile();
                 break;
-            case "moyenne":
+            case "1":
                 instance = new IAMoyenne();
                 break;
-            case "difficile":
+            case "2":
                 instance = new IADifficile();
                 break;
             default:

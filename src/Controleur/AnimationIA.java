@@ -4,10 +4,10 @@ import java.util.List;
 import java.awt.Point;
 
 public class AnimationIA {
-    int lenteur;
+    final int lenteur;
     int decompte;
-    IA joueur;
-    ControleurMediateur control;
+    final IA joueur;
+    final ControleurMediateur control;
     List<Point> enAttente;
 
     public AnimationIA(int lenteur, IA joueur, ControleurMediateur control) {

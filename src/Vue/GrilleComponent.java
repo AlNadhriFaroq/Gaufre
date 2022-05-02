@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class GrilleComponent extends JComponent {
     Graphics2D dessin;
-    Grille grille;
+    final Grille grille;
     int tailleCase;
 
     public GrilleComponent(Jeu jeu) {

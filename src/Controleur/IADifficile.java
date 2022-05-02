@@ -8,7 +8,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 public class IADifficile extends IA {
-    Hashtable<Grille, Point> configVus;
+    final Hashtable<Grille, Point> configVus;
 
     public IADifficile(){
         configVus = new Hashtable<>();

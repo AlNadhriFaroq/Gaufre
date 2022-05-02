@@ -1,12 +1,14 @@
 package Controleur;
 
+import Modele.Grille;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class IAFacile extends IA {
-    Random r;
+    final Random r;
 
     public IAFacile(){
         r = new Random();

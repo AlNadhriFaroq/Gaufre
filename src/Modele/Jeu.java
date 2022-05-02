@@ -10,8 +10,8 @@ import java.io.OutputStream;
 import java.awt.Point;
 
 public class Jeu {
-	Grille grille;
-	Historique histo;
+	final Grille grille;
+	final Historique histo;
 	boolean joueur;
 	
 	public Jeu() {

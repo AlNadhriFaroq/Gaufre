@@ -8,7 +8,7 @@ import java.awt.Point;
 import java.util.Random;
 
 public class IAMoyenne extends IA {
-    Random r;
+    final Random r;
     int nbCasesNonMangees;
 
     public IAMoyenne() {

@@ -2,18 +2,12 @@ package Global;
 
 import java.util.Properties;
 import java.util.NoSuchElementException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 public class Configuration {
     static Configuration instance = null;
     Properties prop;
-    String dossierParametres;
+    final String dossierParametres;
 
     protected Configuration() {
         dossierParametres = System.getProperty("user.home") + File.separator + ".GaufreEmpoisonnee";
@@ -31,7 +25,7 @@ public class Configuration {
         } catch (FileNotFoundException e) {
             prop = defaut;
         } catch (IOException e) {
-            System.err.println(e.toString());
+            System.err.println(e);
             System.exit(1);
         }
     }
@@ -67,7 +61,7 @@ public class Configuration {
             prop.store(out, null);
         } catch (IOException e) {
             System.err.println("Impossible de sauvegarder dans parametres.cfg !");
-            System.err.println(e.toString());
+            System.err.println(e);
             System.exit(1);
         }
     }

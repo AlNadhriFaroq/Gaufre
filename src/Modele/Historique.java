@@ -7,7 +7,8 @@ import java.io.PrintStream;
 import java.awt.Point;
 
 public class Historique {
-    List<Point> passe, futur;
+    final List<Point> passe;
+    final List<Point> futur;
 
     public Historique() {
         passe = new ArrayList<>();

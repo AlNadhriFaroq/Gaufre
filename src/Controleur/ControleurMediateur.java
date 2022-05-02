@@ -8,10 +8,10 @@ import java.io.*;
 import java.awt.Point;
 
 public class ControleurMediateur {
-    Jeu jeu;
+    final Jeu jeu;
     InterfaceGraphique vue;
     AnimationIA joueur1IA, joueur2IA;
-    String dossierSauvegardes;
+    final String dossierSauvegardes;
 
     public ControleurMediateur(Jeu jeu) {
         this.jeu = jeu;
@@ -36,16 +36,16 @@ public class ControleurMediateur {
                 initialiserScores();
                 break;
             case "Joueur1IA":
-                //basculeIA();
+                joueur1IA();
                 break;
             case "Joueur1IADifficulte":
-                //basculeIA();
+                joueur1IADifficulte();
                 break;
             case "Joueur2IA":
-                //basculeIA();
+                joueur2IA();
                 break;
             case "Joueur2IADifficulte":
-                //basculeIA();
+                joueur2IADifficulte();
                 break;
             case "AgrandirLignes":
                 agrandirLignes();
@@ -72,7 +72,7 @@ public class ControleurMediateur {
                 sauver();
                 break;
             case "Quitter":
-                System.exit(0);
+                quitter();
                 break;
             default:
                 System.out.println("Touche inconnue : " + touche);
@@ -129,8 +129,38 @@ public class ControleurMediateur {
         vue.mettreAJourScores();
     }
 
+    public void joueurQuiCommence() {
+        Configuration.instance().ecrire("JoueurQuiCommence", ""+!Boolean.parseBoolean(Configuration.instance().lire("JoueurQuiCommence")));
+        nouvellePartie();
+    }
+
     public void joueur1IA() {
-        //
+        if (Boolean.parseBoolean(Configuration.instance().lire("Joueur1IA")))
+            Configuration.instance().ecrire("Joueur1IA", "false");
+        else
+            Configuration.instance().ecrire("Joueur1IA", "true");
+        nouvellePartie();
+    }
+
+    public void joueur1IADifficulte() {
+        int val = (Integer.parseInt(Configuration.instance().lire("Joueur1IADifficulte")) + 1) % 3;
+        Configuration.instance().ecrire("Joueur1IADifficulte", ""+val);
+        vue.mettreAJourIA();
+        nouvellePartie();
+    }
+
+    public void joueur2IA() {
+        if (Boolean.parseBoolean(Configuration.instance().lire("Joueur2IA")))
+            Configuration.instance().ecrire("Joueur2IA", "false");
+        else
+            Configuration.instance().ecrire("Joueur2IA", "true");
+        nouvellePartie();
+    }
+
+    public void joueur2IADifficulte() {
+        int val = (Integer.parseInt(Configuration.instance().lire("Joueur2IADifficulte")) + 1) % 3;
+        Configuration.instance().ecrire("Joueur2IADifficulte", ""+val);
+        nouvellePartie();
     }
 
     public void agrandirLignes() {
@@ -171,7 +201,7 @@ public class ControleurMediateur {
 
     public void nouvellePartie() {
         jeu.nouvellePartie();
-        vue.mettreAJourGrille();
+        vue.mettreAJour();
 
         if (Boolean.parseBoolean(Configuration.instance().lire("Joueur1IA")))
             joueur1IA = new AnimationIA(10, IA.nouvelle(jeu, true), this);
@@ -184,7 +214,6 @@ public class ControleurMediateur {
         else
             if (Boolean.parseBoolean(Configuration.instance().lire("Joueur2IA")))
                 joueur2IA.miseAJour();
-        System.out.println(Boolean.parseBoolean(jeu.joueur() + " " + Configuration.instance().lire("Joueur1IA")) + " " + Boolean.parseBoolean(Configuration.instance().lire("Joueur2IA")));
     }
 
     public void charger() {
@@ -195,7 +224,7 @@ public class ControleurMediateur {
             vue.mettreAJourGrille();
         } catch (FileNotFoundException e) {
             System.err.println("Impossible de charger la sauvegarde !");
-            System.err.println(e.toString());
+            System.err.println(e);
         }
     }
 
@@ -208,9 +237,13 @@ public class ControleurMediateur {
             jeu.ecrire(out);
         } catch (FileNotFoundException e) {
             System.err.println("Impossible de sauvegarder la partie !");
-            System.err.println(e.toString());
+            System.err.println(e);
         } catch (IOException e) {
-            System.err.println(e.toString());
+            System.err.println(e);
         }
+    }
+
+    public void quitter() {
+        System.exit(0);
     }
 }

@@ -6,7 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class AdaptateurClavier extends KeyAdapter {
-    ControleurMediateur control;
+    final ControleurMediateur control;
 
     AdaptateurClavier(ControleurMediateur control) {
         this.control = control;

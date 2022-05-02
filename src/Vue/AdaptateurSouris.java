@@ -6,8 +6,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class AdaptateurSouris extends MouseAdapter {
-    GrilleComponent gComp;
-    ControleurMediateur control;
+    final GrilleComponent gComp;
+    final ControleurMediateur control;
 
     public AdaptateurSouris(GrilleComponent gComp, ControleurMediateur control) {
         this.gComp = gComp;
