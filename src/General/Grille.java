@@ -192,6 +192,7 @@ public class Grille {
         parentg.p.updateUI();
     }
     public void nouvellepartie (){
+        histo.reiniHisto();
         int m = 0 , n = 0 ;
         while(n < this.lignes){
             while (m < this.colonnes){
