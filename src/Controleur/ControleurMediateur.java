@@ -164,28 +164,36 @@ public class ControleurMediateur {
     }
 
     public void agrandirLignes() {
-        int lignes = Integer.parseInt(Configuration.instance().lire("NbLignes")) + 1;
+        int lignes = Integer.parseInt(Configuration.instance().lire("NbLignes")) ;
+        if(lignes < 100)
+            lignes++;
         Configuration.instance().ecrire("NbLignes", ""+lignes);
         jeu.nouvellePartie();
         vue.mettreAJourGrille();
     }
 
     public void retrecirLignes() {
-        int lignes = Integer.parseInt(Configuration.instance().lire("NbLignes")) - 1;
+        int lignes = Integer.parseInt(Configuration.instance().lire("NbLignes"));
+        if(lignes > 2)
+            lignes--;
         Configuration.instance().ecrire("NbLignes", ""+lignes);
         jeu.nouvellePartie();
         vue.mettreAJourGrille();
     }
 
     public void agrandirColonnes() {
-        int colonnes = Integer.parseInt(Configuration.instance().lire("NbColonnes")) + 1;
+        int colonnes = Integer.parseInt(Configuration.instance().lire("NbColonnes"));
+        if(colonnes < 100)
+            colonnes++;
         Configuration.instance().ecrire("NbColonnes", ""+colonnes);
         jeu.nouvellePartie();
         vue.mettreAJourGrille();
     }
 
     public void retrecirColonnes() {
-        int colonnes = Integer.parseInt(Configuration.instance().lire("NbColonnes")) - 1;
+        int colonnes = Integer.parseInt(Configuration.instance().lire("NbColonnes"));
+        if(colonnes > 2)
+            colonnes--;
         Configuration.instance().ecrire("NbColonnes", ""+colonnes);
         jeu.nouvellePartie();
         vue.mettreAJourGrille();
